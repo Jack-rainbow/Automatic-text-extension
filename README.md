@@ -13,3 +13,4 @@
   $.fn.autoTextArea({
             element:"#abc"
   })
+  > 至于为什么$.autoTextArea没有加到window下，我也不知道。奇葩:dog:
