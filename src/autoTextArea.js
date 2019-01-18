@@ -33,17 +33,7 @@
 		extra = endOptions.extra || 0;
 		isResize = endOptions.isResize || "none";
 
-		$elements.each(function () {
-			var that = this;
-			$(that).attr("data-auto-height", "true");
-			that.style.resize = endOptions.isResize; //如果不希望使用者可以自由的伸展textarea的高宽可以设置其他值
-			var minHeight = parseFloat(getStyle(that, 'height'));
-
-			$(that).on("propertychange input focus change", function () {
-				change(this, minHeight);
-			})
-			change(that, minHeight);
-		});
+	
 
 
 		// 根据传入的文本域元素和样式名,返回对应的元素值
@@ -90,7 +80,17 @@
 				thatElement.currHeight = parseInt(style.height);
 			};
 		};
+		$elements.each(function () {
+			var that = this;
+			$(that).attr("data-auto-height", "true");
+			that.style.resize = endOptions.isResize; //如果不希望使用者可以自由的伸展textarea的高宽可以设置其他值
+			var minHeight = parseFloat(getStyle(that, 'height'));
 
+			$(that).on("propertychange input focus change", function () {
+				change(this, minHeight);
+			})
+			change(that, minHeight);
+		});
 		
 	}
 
